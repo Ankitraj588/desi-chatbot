@@ -14,14 +14,14 @@ def chat_with_gpt(prompt):
     """Send user input to OpenAI API and get a response."""
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # Use "gpt-3.5-turbo" if needed
-        messages=[{"role": "system", "content": "i am a friend from  inida ,  chatting with my friend try to make funny indian(desi) messages."},
+        messages=[{"role": "system", "content": "i am a friend from  india ,  chatting with my friend try to make funny indian(desi) messages."},
                   {"role": "user", "content": prompt}],
         temperature=0.7
     )
     return response["choices"][0]["message"]["content"]
 
 
-"""Type the message at specified (x, y) coordinates."""
+"""Type the message at specified coordinates."""
 
 def type_message_at_coordinates(message, x, y):
     pyautogui.click(x, y)  # Move the mouse to the position
@@ -50,9 +50,9 @@ while True:
 
     # Print the copied conversation if you want
     # print(chat_history) 
-
+    if "bye" in chat_history:
+        break    
     x=chat_with_gpt(chat_history)
-    # x="kya hua" if you want to spam the chat 
     type_message_at_coordinates(x,1354,1010)
     send_message()
 
